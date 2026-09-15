@@ -1,6 +1,25 @@
-/* =========================================
+/* ==========================================
    RESET & GLOBAL STYLES
-========================================= */
+========================================== */
+
+:root {
+    --primary-color: #2563eb;
+    --secondary-color: #1e293b;
+    --background-color: #ffffff;
+    --text-color: #172033;
+    --card-background: #f8fafc;
+    --border-color: #e2e8f0;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background-color: #0f172a;
+        --text-color: #e2e8f0;
+        --card-background: #1e293b;
+        --border-color: #334155;
+        --secondary-color: #cbd5e1;
+    }
+}
 
 * {
     box-sizing: border-box;
@@ -15,7 +34,7 @@ html {
 body {
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.7;
-    color: #172033;
+    color: var(--text-color);
     background: #ffffff;
 }
 
@@ -72,8 +91,8 @@ textarea:focus-visible {
 ========================================= */
 
 .site-header {
-    background: #ffffff;
-    border-bottom: 1px solid #e5e7eb;
+    background: var(--background-color);
+    border-bottom: 1px solid var(--border-color);
     position: sticky;
     top: 0;
     z-index: 100;
@@ -122,7 +141,7 @@ textarea:focus-visible {
 ========================================= */
 
 .hero {
-    background: #f5f8ff;
+    background: var(--card-background);
     padding: 100px 0;
 }
 
@@ -652,7 +671,29 @@ textarea::placeholder {
 /* =========================================
    RESPONSIVE DESIGN
 ========================================= */
+/* Mobile-first base layout */
+.hero-content {
+    grid-template-columns: 1fr;
+}
 
+.hero-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+/* Desktop layout */
+@media (min-width: 801px) {
+    .hero-content {
+        grid-template-columns: 1.5fr 1fr;
+        align-items: center;
+        gap: 70px;
+    }
+
+    .hero-buttons {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+}
 @media (max-width: 800px) {
 
     .header-container {
@@ -763,5 +804,72 @@ textarea::placeholder {
     *::after {
         transition: none !important;
     }
+
+}
+/* Dark Mode Improvements */
+@media (prefers-color-scheme: dark) {
+
+    body {
+        background-color: var(--background-color);
+        color: var(--text-color);
+    }
+
+    header {
+        background-color: var(--background-color);
+        border-bottom-color: var(--border-color);
+    }
+
+    nav a {
+        color: var(--text-color);
+    }
+
+    nav a:hover,
+    nav a.active {
+        color: var(--primary-color);
+    }
+
+    .hero {
+        background-color: var(--card-background);
+    }
+
+    .hero h1,
+    .hero p {
+        color: var(--text-color);
+    }
+
+    section,
+    article,
+    aside {
+        color: var(--text-color);
+    }
+
+    .card,
+    .project-card,
+    .skill-card {
+        background-color: var(--card-background);
+        color: var(--text-color);
+        border-color: var(--border-color);
+    }
+
+    footer {
+        background-color: var(--secondary-color);
+        color: var(--text-color);
+    }
+
+    input,
+    textarea,
+    select {
+        background-color: var(--card-background);
+        color: var(--text-color);
+        border-color: var(--border-color);
+    }
+    .nav-list a {
+    color: var(--text-color);
+}
+
+main#main-content .hero .hero-content .hero-text p {
+    color: #e2e8f0 !important;
+
+}
 
 }
